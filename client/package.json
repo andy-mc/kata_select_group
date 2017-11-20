@@ -21,7 +21,7 @@
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.0",
     "karma-coverage": ">=0.5.5",
-    "karma-jasmine": "~0.1.6",
+    "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": ">=1.0.0",
     "matchdep": ">=1.0.1",
     "serve-static": ">=1.10.2"
