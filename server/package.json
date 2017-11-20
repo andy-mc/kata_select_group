@@ -2,7 +2,7 @@
   "name": "Groups-Kata-Server",
   "version": "0.0.1",
   "description": "Select Group Kata - Server",
-  "license" : "MIT",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:j0n4s/kata_select_group.git"
