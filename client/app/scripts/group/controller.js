@@ -12,11 +12,6 @@ angular.module('Group')
   };
 
   $scope.get_pairs = function (employees_list) {
-
-    function optimum(input) {
-      return input.pop()
-    }
-
     function employees_frequency(input) {
       var employees_ids = _(employees_list)
       .chain()
@@ -34,14 +29,12 @@ angular.module('Group')
       var order_employees_freq = _(employees_freq).sortBy(function(employee){
         return [employee[1], employee[0]];
       });
-
-      console.log(order_employees_freq)
       return order_employees_freq
     }
 
     var winners = [];
     while (employees_list.length > 0) {
-      var user = optimum(employees_frequency(employees_list));
+      var user = employees_frequency(employees_list).pop();
       if (user[1] > 1) {
         if (_(_(employees_list).flatten()).contains(user[0])) {
           employees_list = _(employees_list).filter(function(couple){
