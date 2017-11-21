@@ -26,7 +26,6 @@ describe('Directive: file_read', function () {
         });
 
         element.trigger(event);
-        
         expect(scope.data).toBe('data');
       });
   });
