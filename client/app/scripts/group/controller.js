@@ -32,14 +32,18 @@ angular.module('Group')
 
       var max_freq = _(order_employees_freq).max(function(employee){
         return employee[1];
-      });
+      })[1];
+      
+      var max_employees = _(order_employees_freq).filter(function(employee) {
+        return employee[1] === max_freq
+      })
 
-      return max_freq
+      return max_employees
     }
 
     var winners = [];
     while (employees_list.length > 0) {
-      var user = employees_frequency(employees_list);
+      var user = employees_frequency(employees_list).pop();
       if (user[1] > 1) {
         if (_(_(employees_list).flatten()).contains(user[0])) {
           employees_list = _(employees_list).filter(function(couple){

@@ -96,7 +96,7 @@ describe('Controller: select group', function () {
       expect(scope.result).toEqual([2012, 2015]);
     });
     
-    fit('should return case 6', function(){
+    xit('should return case 6', function(){
       var input = [
         [1002, 2011],
         [1002, 2012],
