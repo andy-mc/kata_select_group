@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('Group')
-.controller('group', function ($scope, _, data) {
+.controller('group', function ($scope, _) {
   $scope.controller_loaded = 'Group loaded!';
 
   $scope.parse_csv = function() {
-    var employees_ids = Papa.parse(data.data, {delimiter: ','}).data;
+    console.log(typeof $scope.employ)
+    var employees_ids = Papa.parse($scope.data, {delimiter: ','}).data;
     return _(employees_ids).map(function(couple){
       return [parseInt(couple[0]), parseInt(couple[1])];
     });
@@ -58,11 +59,6 @@ angular.module('Group')
   $routeProvider
   .when('/group', {
     templateUrl: 'scripts/group/views/group.html',
-    controller: 'group', 
-    resolve: {
-      data: function($http) {
-        return $http.get('./scripts/group/specs/test_employees.csv');
-      }
-    }
+    controller: 'group'
   });
 });

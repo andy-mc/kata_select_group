@@ -5,13 +5,13 @@ describe('Controller: select group', function () {
 
   var controller;
   var scope;
-  var data = {data: '1009, 2011\n1017, 2011' };
+  var data = '1009, 2011\n1017, 2011';
 
   beforeEach(inject(function ($rootScope, $controller) {
     scope = $rootScope.$new();
+    scope.data = data;
     controller = $controller('group', {
-      $scope: scope,
-      data: data
+      $scope: scope
     });
   }));
 
@@ -68,6 +68,22 @@ describe('Controller: select group', function () {
       scope.get_pairs(input);
       expect(scope.result).toEqual([1001, 1009, 2003]);
     });
+    
+    fit('should return case 3', function(){
+      var input = [
+        [1009, 2011],
+        [1017, 2011],
+        [1007, 2017],
+        [1004, 2018],
+        [1007, 2018],
+        [1018, 2018],
+        [1018, 2011]
+      ];
+
+      scope.get_pairs(input);
+      console.log('>> ', scope.result);
+      expect(scope.result).toEqual([1007, 2011, 2018]);
+    });
   });
 
   describe('when going to /group', function () {
@@ -83,7 +99,6 @@ describe('Controller: select group', function () {
       http = $http;
     
       httpBackend.when('GET', 'scripts/group/views/group.html').respond('<div></div>');
-      httpBackend.when('GET', './scripts/group/specs/test_employees.csv').respond('');
     }));
 
     afterEach(function () {
@@ -100,15 +115,6 @@ describe('Controller: select group', function () {
 
       expect(route.current.templateUrl).toBe('scripts/group/views/group.html');
       expect(route.current.controller).toBe('group');
-    });
-
-    it('should read test_employees.csv file correctly', function() {
-      spyOn(http, 'get').and.returnValue('data_csv');
-
-      var result = route.routes['/group'].resolve.data(http);
-
-      expect(http.get).toHaveBeenCalledWith('./scripts/group/specs/test_employees.csv'); 
-      expect(result).toBe('data_csv');
     });
   });
 

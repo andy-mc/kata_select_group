@@ -4,18 +4,30 @@ describe('Directive: file_read', function () {
   beforeEach(module('Group'));
 
   var scope;
+  var isolate_scope;
   var element;
+
   beforeEach(inject(function ($rootScope, $compile) {
     scope = $rootScope.$new();
-    scope.spy_function = jasmine.createSpy('spy_function');
-    element = $('<input type="file" fileread="spy_function"/>');
+    scope.data = '';
+    element = $('<input type="file" fileread="data"/>');
     $compile(element)(scope);
+    isolate_scope = element.isolateScope();
+    scope.$digest();
+
   }));
 
   describe('on_change input file', function() {
-      fit('should trigger callback', function(){
-        element.trigger('change');
-        expect(scope.spy_function).toHaveBeenCalled();
+      xit('should trigger callback', function(){
+        var event = $.Event('change', {
+          target:{
+            files: [new Blob(['data'])]
+          }
+        });
+
+        element.trigger(event);
+        
+        expect(scope.data).toBe('data');
       });
   });
 });
