@@ -13,14 +13,14 @@ angular.module('Group')
 
   $scope.get_pairs = function (employees_list) {
     function employees_frequency(input) {
-      var employees_ids = _(employees_list)
+      var employees_ids = _(input)
       .chain()
       .flatten()
       .uniq()
       .value();
       
       var employees_freq = _(employees_ids).map(function(id) {
-        var frequency = employees_list.filter(function(couple) {
+        var frequency = input.filter(function(couple) {
           return (couple.indexOf(id) !== -1);
         }).length;
         return [id, frequency];
@@ -29,12 +29,17 @@ angular.module('Group')
       var order_employees_freq = _(employees_freq).sortBy(function(employee){
         return [employee[1], employee[0]];
       });
-      return order_employees_freq
+
+      var max_freq = _(order_employees_freq).max(function(employee){
+        return employee[1];
+      });
+
+      return max_freq
     }
 
     var winners = [];
     while (employees_list.length > 0) {
-      var user = employees_frequency(employees_list).pop();
+      var user = employees_frequency(employees_list);
       if (user[1] > 1) {
         if (_(_(employees_list).flatten()).contains(user[0])) {
           employees_list = _(employees_list).filter(function(couple){
