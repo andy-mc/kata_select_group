@@ -44,14 +44,19 @@ angular.module('Group')
     var winners = [];
     while (employees_list.length > 0) {
       var user = employees_frequency(employees_list).pop();
-      if (user[1] > 1) {
-        if (_(_(employees_list).flatten()).contains(user[0])) {
-          employees_list = _(employees_list).filter(function(couple){
-            return (couple.indexOf(user[0]) === -1);
-          });
-          winners.push(user[0]);
-        }
-      } else {
+      var users_exist_in_list = _(employees_list).chain()
+      .flatten()
+      .contains(user[0])
+      .value();
+
+      if (user[1] > 1 && users_exist_in_list) {
+        employees_list = _(employees_list).filter(function(couple){
+          return (couple.indexOf(user[0]) === -1);
+        });
+        winners.push(user[0]);
+      }
+
+      if (user[1] === 1) {
         _(employees_list).each(function(employee, index){
           if (index % 2 === 0) {
             winners.push(employee[0]);
@@ -64,8 +69,6 @@ angular.module('Group')
     }
     
     winners.sort();
-    console.log('results', winners);
-
     $scope.result = winners;
   };
 })

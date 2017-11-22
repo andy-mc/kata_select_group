@@ -96,7 +96,7 @@ describe('Controller: select group', function () {
       expect(scope.result).toEqual([2012, 2015]);
     });
     
-    fit('should return case 6', function(){
+    xit('should return case 6', function(){
       var input = [
         [1002, 2011],
         [1002, 2012],
@@ -107,6 +107,19 @@ describe('Controller: select group', function () {
 
       scope.get_pairs(input);
       expect(scope.result).toEqual([1002,1003,1004]);
+    });
+
+    xit('should return case 7', function(){
+      var input = [
+        [1001, 2011],
+        [1002, 2011],
+        [1002, 2012],
+        [1003, 2012],
+        [1004, 2013]
+      ];
+
+      scope.get_pairs(input);
+      expect(scope.result).toEqual([1004, 2011, 2012]);
     });
   });
 
