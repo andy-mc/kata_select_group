@@ -1,5 +1,25 @@
 <h3>Group</h3>
 <br>
+  <input type="file" fileread="data"/>
+<br>
+<button class="btn btn-success" ng-click="get_pairs(parse_csv());">
+    Proccess Data
+</button>
+<br>
+<br>
+<div class="row">
+    <div class="col-6">
+      <ul class="list-group">
+          <div ng-repeat="employee in result">
+            <li class="list-group-item">{{employee}}</li>
+          </div>
+      </ul>
+  </div>
+</div>
+<br>
 <div>
-  <br><a href="#/" class="kataFont">Home</a>
+  <br>
+  <button class="btn btn-primary">
+      <a href="#/" class="kataFont">Home</a>
+  </button>
 </div>

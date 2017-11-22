@@ -8,6 +8,8 @@ module.exports = [
   'app/bower_components/angular-sanitize/angular-sanitize.js',
   'app/bower_components/angular-underscore-module/angular-underscore-module.js',
   'app/bower_components/underscore/underscore.js',
+  'app/bower_components/papaparse/papaparse.js',
+  'app/bower_components/angular-papa-promise/dist/angular-papa-promise.js',
   'app/scripts/**/*module.js',
   'app/scripts/**/*.js',
 ];

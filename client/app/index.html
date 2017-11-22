@@ -7,28 +7,34 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="styles/main.css">
-
   </head>
   <body ng-app="App" ontouchstart="" onmouseover="">
-    <h1>General App</h1>
-    <div ng-controller="Main">
-      <h2>Controller status: {{controller_loaded || 'not loaded!'}}</h2>
-      <div ng-view ng-cloak></div>
+    <div class="container">
+      <div class="row">
+        <h1 class="text-center">General App</h1>
+        <div ng-controller="Main" class="col-12">
+          <h2>Controller status: {{controller_loaded || 'not loaded!'}}</h2>
+          <div ng-view ng-cloak class="col-12"></div>
+        </div>
+      </div>
     </div>
 
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
     <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>    
 
-    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/papaparse/papaparse.js"></script>
+    <script src="bower_components/angular-papa-promise/dist/angular-papa-promise.js"></script>
 
     <script src="scripts/main/module.js"></script>
     <script src="scripts/group/module.js"></script>
     <script src="scripts/main/controller.js"></script>
     <script src="scripts/group/controller.js"></script>
+    <script src="scripts/group/directives/file_read.js"></script>
   </body>
 </html>

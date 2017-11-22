@@ -26,6 +26,6 @@
     "dump": true, "jQuery": true, "Chart": true, "by":true,
     "element": true, "browser": true, "Bloodhound": true,
     "Dropzone":true, "JSONH": true, "protractor": true, "identity": true,
-    "isDate": true, "__require":true, "__app": true, "__database_uri": true
+    "isDate": true, "Papa": true,"__require":true, "__app": true, "__database_uri": true
   }
 }
